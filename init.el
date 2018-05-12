@@ -48,20 +48,15 @@ values."
      javascript
      ruby
      ruby-on-rails
-     shell
+     (shell :variables
+            shell-default-height 30
+            shell-default-position 'bottom)
      shell-scripts
      sql
      themes-megapack
      typescript
      vagrant
      yaml
-     ;; org
-     ;; (shell :variables
-     ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
-     ;; spell-checking
-     ;; syntax-checking
-     ;; version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -114,7 +109,7 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'hybrid
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
    dotspacemacs-verbose-loading nil
    ;; Specify the startup banner. Default value is `official', it displays
@@ -314,7 +309,6 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-
   )
 
 (defun dotspacemacs/user-config ()
@@ -324,6 +318,48 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+
+  ;; Indentation
+  (setq-default
+   css-indent-offset 2
+   js-indent-level 2
+   web-mode-code-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   )
+
+  ;; Frame
+  (setq-default
+   scroll-margin 5)
+  (global-set-key [(control ?v)]
+                  (lambda () (interactive (next-line (/ (window-height (selected-window)) 4)))))
+
+  ;; Dired
+  (defun sof/dired-sort ()
+    "Dired sort hook to list directories first."
+    (save-excursion
+      (let (buffer-read-only)
+        (forward-line 2)
+        (sort-regexp-fields t "^.*$" "[ ]*." (point) (point-max))))
+    (and (featurep 'xemacs)
+         (fboundp 'dired-insert-set-properties)
+         (dired-insert-set-properties (point-min) (point-max)))
+    (set-buffer-modified-p nil)
+   )
+  (add-hook 'dired-after-readin-hook 'sof/dired-sort)
+
+  ;; Linum
+  (setq linum-format "%4d \u2502 ")
+
+  ;; FCI
+  (setq fci-rule-column 80)
+  (setq fci-rule-width 1)
+  (setq fci-rule-color "black")
+
+  ;; Modes
+  (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+  (define-globalized-minor-mode global-linum-mode linum-mode (lambda () (linum-mode 1)))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
