@@ -1,6 +1,6 @@
-# .Spaceemacs
+# .Spacemacs
 
-Customization package for setting up `Spaceemacs` distribution.
+Customization package for setting up `Spacemacs` distribution.
 
 ## Pre-requisites
 
