@@ -324,7 +324,10 @@ you should place your code here."
   ;; Indentation
   (setq-default
    css-indent-offset 2
+   coffee-tab-width 2
    js-indent-level 2
+   js2-basic-offset 2
+   typescript-indent-level 2
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2
