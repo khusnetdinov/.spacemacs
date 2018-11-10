@@ -12,9 +12,6 @@ safely install all packages files  without touching any Spacemacs files.
 ```bash
 $ curl -L https://bit.ly/2HKePFN | bash
 ```
-
-## Tools
-
 ## License
 
 ### This code is free to use under the terms of the MIT license.
