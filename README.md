@@ -10,7 +10,7 @@ To install .spacemacs files to home director please use installing script witch
 safely install all packages files  without touching any Spacemacs files.
 
 ```bash
-$ curl -L https://bit.ly/2HKePFN | bash
+$ curl -L https://bit.ly/44zDLWn | bash
 ```
 ## License
 
