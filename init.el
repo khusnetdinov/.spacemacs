@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(go
+   '(
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -53,6 +53,15 @@ values."
      javascript
      markdown
      nginx
+     (osx :variables
+          osx-command-as       'hyper
+          osx-option-as        'meta
+          osx-control-as       'control
+          osx-function-as      nil
+          osx-right-command-as 'left
+          osx-right-option-as  'left
+          osx-right-control-as 'left
+          osx-swap-option-and-command nil)
      python
      ruby
      ruby-on-rails
@@ -341,8 +350,7 @@ you should place your code here."
    typescript-indent-level 2
    web-mode-code-indent-offset 2
    web-mode-css-indent-offset 2
-   web-mode-markup-indent-offset 2
-   )
+   web-mode-markup-indent-offset 2)
 
   ;; Frame
   (setq-default
@@ -360,8 +368,7 @@ you should place your code here."
     (and (featurep 'xemacs)
          (fboundp 'dired-insert-set-properties)
          (dired-insert-set-properties (point-min) (point-max)))
-    (set-buffer-modified-p nil)
-   )
+    (set-buffer-modified-p nil))
   (add-hook 'dired-after-readin-hook 'sof/dired-sort)
 
   ;; Linum
@@ -376,8 +383,7 @@ you should place your code here."
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
   (define-globalized-minor-mode global-linum-mode linum-mode (lambda () (linum-mode 1)))
 
-  (evil-briefcase-mode 1)
-  )
+  (evil-briefcase-mode 1))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -412,5 +418,4 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:background nil)))))
-)
+ '(default ((t (:background nil))))))
