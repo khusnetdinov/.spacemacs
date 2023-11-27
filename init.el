@@ -373,11 +373,16 @@ you should place your code here."
 
   ;; Linum
   (setq linum-format "%4d \u2502 ")
+  (setq display-line-numbers t)
 
   ;; FCI
-  (setq fci-rule-column 80)
+  ;; (setq fci-rule-column 80)
+  ;; (setq fci-rule-column 100)
+  (setq fci-rule-column 120)
   (setq fci-rule-width 1)
   (setq fci-rule-color "black")
+  ;; (setq fci-always-use-textual-rule t)
+  ;; (fci-always-use-textual-rule t)
 
   ;; Modes
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
