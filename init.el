@@ -53,15 +53,6 @@ values."
      javascript
      markdown
      nginx
-     (osx :variables
-          osx-command-as       'hyper
-          osx-option-as        'meta
-          osx-control-as       'control
-          osx-function-as      nil
-          osx-right-command-as 'left
-          osx-right-option-as  'left
-          osx-right-control-as 'left
-          osx-swap-option-and-command nil)
      python
      ruby
      ruby-on-rails
@@ -374,15 +365,15 @@ you should place your code here."
   ;; Linum
   (setq linum-format "%4d \u2502 ")
   (setq display-line-numbers t)
+  (global-display-line-numbers-mode t)
+  (display-line-numbers-mode t)
 
   ;; FCI
-  ;; (setq fci-rule-column 80)
-  ;; (setq fci-rule-column 100)
-  (setq fci-rule-column 120)
+  (setq fci-rule-column 80)
   (setq fci-rule-width 1)
   (setq fci-rule-color "black")
-  ;; (setq fci-always-use-textual-rule t)
-  ;; (fci-always-use-textual-rule t)
+  (add-hook 'prog-mode-hook (lambda ()
+                              (display-fill-column-indicator-mode)))
 
   ;; Modes
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
