@@ -343,11 +343,13 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-markup-indent-offset 2)
 
-  ;; Frame
+  ;; Scroll
   (setq-default
    scroll-margin 5)
   (global-set-key [(control ?v)]
-                  (lambda () (interactive (next-line (/ (window-height (selected-window)) 4)))))
+                  (lambda ()
+                    (interactive
+                     (next-line (/ (window-height (selected-window)) 4)))))
 
   ;; Dired
   (defun sof/dired-sort ()
@@ -364,16 +366,13 @@ you should place your code here."
 
   ;; Linum
   (setq linum-format "%4d \u2502 ")
-  (setq display-line-numbers t)
-  (global-display-line-numbers-mode t)
-  (display-line-numbers-mode t)
+  (add-hook 'prog-mode-hook (lambda () (display-line-numbers-mode)))
 
   ;; FCI
   (setq fci-rule-column 80)
   (setq fci-rule-width 1)
   (setq fci-rule-color "black")
-  (add-hook 'prog-mode-hook (lambda ()
-                              (display-fill-column-indicator-mode)))
+  (add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
 
   ;; Modes
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
