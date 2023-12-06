@@ -379,7 +379,8 @@ you should place your code here."
   (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
   (define-globalized-minor-mode global-linum-mode linum-mode (lambda () (linum-mode 1)))
 
-  (evil-briefcase-mode 1))
+  (evil-briefcase-mode 1)
+  (evil-surround-mode 1))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
