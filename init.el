@@ -48,6 +48,8 @@ values."
      git
      (go :variables
          go-backend 'lsp)
+     (gtags :variables
+            gtags-enable-by-default t)
      helm
      html
      javascript
