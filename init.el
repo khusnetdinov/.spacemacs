@@ -152,9 +152,9 @@ values."
    dotspacemacs-themes '(
                          ;; apropospriate-dark
                          ;; gruvbox-dark-soft
-                         ;; kaolin-temple
+                         kaolin-temple
                          ;; spacemacs-dark
-                         timu-spacegrey
+                         ;; timu-spacegrey
                          ;; zenburn
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
