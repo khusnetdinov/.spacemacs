@@ -39,8 +39,7 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      clojure
-     ;; (colors :variables
-     ;;         colors-colorize-identifiers 'all)
+     colors
      docker
      emacs-lisp
      git
@@ -55,7 +54,6 @@ values."
      nginx
      python
      (ruby +lsp)
-     ;; https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
      (rust +lsp)
      (ruby-on-rails +lsp)
      (shell :variables
@@ -74,8 +72,12 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(
-                                      (evil-briefcase :location (recipe :fetcher github :repo "strickinato/evil-briefcase")))
+   dotspacemacs-additional-packages
+   '(
+     (evil-briefcase :location
+                     (recipe :fetcher github :repo "strickinato/evil-briefcase"))
+     timu-spacegrey-theme
+     )
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -149,10 +151,11 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          ;; apropospriate-dark
+                         ;; gruvbox-dark-soft
+                         ;; kaolin-temple
+                         ;; spacemacs-dark
+                         timu-spacegrey
                          ;; zenburn
-                         ;;gruvbox-dark-soft
-                         kaolin-temple
-                         ;;spacemacs-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state nil
@@ -335,6 +338,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  ;; Colors
+  (add-hook 'css-mode-hook 'rainbow-mode)
+  (add-hook 'html-mode-hook 'rainbow-mode)
+
+
   ;; Powerline
   ;; https://www.spacemacs.org/doc/DOCUMENTATION.html#powerline-separators
   (setq powerline-default-separator 'arrow)
@@ -382,11 +390,14 @@ you should place your code here."
   (add-hook 'prog-mode-hook (lambda () (display-fill-column-indicator-mode)))
 
   ;; Modes
-  (define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
-  (define-globalized-minor-mode global-linum-mode linum-mode (lambda () (linum-mode 1)))
+  (define-globalized-minor-mode global-fci-mode fci-mode
+    (lambda () (fci-mode 1)))
+  (define-globalized-minor-mode global-linum-mode linum-mode
+    (lambda () (linum-mode 1)))
 
   (evil-briefcase-mode 1)
-  (evil-surround-mode 1))
+  (evil-surround-mode 1)
+  )
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
